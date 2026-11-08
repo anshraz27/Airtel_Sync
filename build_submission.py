@@ -110,9 +110,12 @@ def label_value(slide, label, value, x, y, lw=2.2, vw=1.6, lsize=11, vsize=22):
 def header_bar(slide, title, subtitle=""):
     """Red left accent bar + title + subtitle."""
     box(slide, 0, 0, 0.12, H.inches, bg_color=RED)
-    txt(slide, title,    0.25, 0.22, 12.8, 0.6, size=30, bold=True, color=WHITE)
+    txt(slide, title,    0.25, 0.22, 9.0, 0.6, size=28, bold=True, color=WHITE)
     if subtitle:
-        txt(slide, subtitle, 0.25, 0.82, 12.8, 0.4, size=14, color=MUTED)
+        txt(slide, subtitle, 0.25, 0.82, 9.0, 0.4, size=13, color=MUTED)
+    # Right pill for repo
+    box(slide, 9.4, 0.25, 3.6, 0.52, bg_color=SLATE, border_color=RED, border_width=Pt(1))
+    txt(slide, "GitHub: github.com/anshraz27/Airtel_Sync", 9.45, 0.38, 3.5, 0.3, size=9.5, bold=True, color=LIGHT, align=PP_ALIGN.CENTER)
 
 def card(slide, x, y, w, h, title="", body_lines=None, title_color=WHITE,
          body_size=12, body_color=LIGHT, bg=SLATE, border=RED):
@@ -157,10 +160,15 @@ def slide1(prs):
 
     # Main title
     txt(sl, "Project Udyam Digital",
-        0.5, 0.42, 12.3, 0.72, size=40, bold=True, color=WHITE)
+        0.5, 0.42, 7.5, 0.72, size=40, bold=True, color=WHITE)
 
     txt(sl, "Making 6 Crore+ Indian MSMEs Go Digital in One Sitting",
-        0.5, 1.12, 12.3, 0.45, size=18, color=RGBColor(0xFF,0xE0,0xDB))
+        0.5, 1.12, 7.5, 0.45, size=18, color=RGBColor(0xFF,0xE0,0xDB))
+
+    # GitHub Repo Banner Pill
+    box(sl, 8.2, 0.45, 4.6, 0.75, bg_color=DARK, border_color=WHITE, border_width=Pt(1.2))
+    txt(sl, "GitHub Code Repository (Main):", 8.35, 0.52, 4.3, 0.25, size=10, bold=True, color=RED)
+    txt(sl, "https://github.com/anshraz27/Airtel_Sync", 8.35, 0.78, 4.3, 0.3, size=11, bold=True, color=WHITE)
 
     # Tagline strip
     box(sl, 0, 1.6, W.inches, 0.06, bg_color=RGBColor(0x7F, 0x0D, 0x00))
@@ -198,7 +206,7 @@ def slide1(prs):
         txt(sl, lbl, cx, 5.2,  2.3, 0.4, size=10, color=MUTED, align=PP_ALIGN.CENTER)
 
     # Footer
-    txt(sl, "Airtel SYNC  ·  Digital Track  ·  7-Slide Submission  ·  2026",
+    txt(sl, "Airtel SYNC · Digital Track · 7-Slide Submission · Code: https://github.com/anshraz27/Airtel_Sync · 2026",
         0, 7.1, W.inches, 0.35, size=10, color=MUTED, align=PP_ALIGN.CENTER)
 
 
@@ -632,30 +640,23 @@ def slide7(prs):
     ]
     bullet_block(sl, privacy_items, 0.4, 4.74, 6.1, 2.1, size=10, bullet="✔ ", color=LIGHT)
 
-    # Stretch goals + risk (right)
-    box(sl, 6.9, 4.2, 6.1, 1.3, bg_color=SLATE,
+    # Deliverables & Code Repository (right)
+    box(sl, 6.9, 4.2, 6.1, 2.8, bg_color=SLATE,
         border_color=GREEN, border_width=Pt(1.2))
-    txt(sl, "✅  Stretch Goals Delivered",
+    txt(sl, "📦  Code Repository & Deliverables Summary",
         7.05, 4.27, 5.8, 0.42, size=13, bold=True, color=GREEN)
-    stretch = [
-        "Partner back-office view with propensity-scored warm lead queue",
-        "ML propensity score (Scikit-learn LR, ROC-AUC 0.69) on 5,000 leads",
+    deliverables = [
+        "GitHub Repo (Main): https://github.com/anshraz27/Airtel_Sync.git",
+        "FastAPI Backend + Mobile Tailwind SPA (Running on port 8000)",
+        "Free Hugging Face LLM (Qwen2.5-72B) & Vision OCR (Qwen2-VL-7B)",
+        "All 12 Specimen KYC Applicants Verified (Planted Traps 100% Caught)",
+        "ML Propensity Scoring (ROC-AUC 0.69) & Partner Warm Lead Queue",
+        "Complete 7-Slider Submission Document in both PPTX and PDF formats"
     ]
-    bullet_block(sl, stretch, 7.05, 4.73, 5.8, 0.65, size=10, bullet="✔ ", color=LIGHT)
-
-    box(sl, 6.9, 5.6, 6.1, 1.4, bg_color=SLATE,
-        border_color=AMBER, border_width=Pt(1.2))
-    txt(sl, "⚠  Risk Mitigation",
-        7.05, 5.67, 5.8, 0.42, size=13, bold=True, color=AMBER)
-    risks = [
-        "LLM API down → Offline fallback advisor (100% demo resilience)",
-        "Ineligible recommendation → Deterministic eligibility code blocks LLM",
-        "OCR fails → Graceful re-upload prompt; fallback specimen cache",
-    ]
-    bullet_block(sl, risks, 7.05, 6.13, 5.8, 0.75, size=10, bullet="⚡ ", color=LIGHT)
+    bullet_block(sl, deliverables, 7.05, 4.75, 5.8, 2.1, size=9.5, bullet="✔ ", color=LIGHT)
 
     txt(sl, "Field Force Integration: Digital channel is additive — partners receive scored warm leads, "
-            "not cold calls. Commission model preserved. Human call available at every step.",
+            "not cold calls. Commission model preserved. Code: https://github.com/anshraz27/Airtel_Sync",
         0.25, 7.05, 12.8, 0.35, size=10, color=GREEN)
 
 
@@ -679,7 +680,12 @@ def build_all():
     print("Building Slide 7 – Rollout, Privacy & Risks...")
     slide7(prs)
     prs.save(PPT_PATH)
-    print(f"\n✅  Saved  →  {PPT_PATH}")
+    print(f"\n✅  Saved PPTX  →  {PPT_PATH}")
+
+    # Generate companion PDF
+    from generate_pdf_slides import generate_pdf
+    generate_pdf()
+    print("✅  Saved PDF   →  c:\\Users\\thean\\Desktop\\airtel_digital\\Airtel_SYNC_Udyam_Digital_7Slides.pdf")
     return PPT_PATH
 
 if __name__ == "__main__":
